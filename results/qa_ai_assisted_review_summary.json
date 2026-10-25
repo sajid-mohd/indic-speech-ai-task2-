@@ -19,7 +19,9 @@
   },
   "limitations": [
     "Provisional AI-assisted assessment; not independent human annotation.",
-    "Some question/reference rows may be concatenated or misaligned.",
+    "A 20-example spot-check found at least one clear content-level question/reference-answer mismatch (sample-0088) and several multi-task prompts where the reference may cover only one component (including sample-0010 and sample-0020). These issues may make correctness and hallucination estimates unreliable.",
+    "The spot-check did not establish a general CSV row-order shift. The full 100 examples have not been manually verified; treat all AI-assisted response-quality counts as exploratory, not validated aggregate rates.",
+    "Official human-review labels remain blank; do not describe the estimates as human-verified.",
     "The raw QA CSV includes examples from a gated dataset and is omitted from this shareable package."
   ]
 }

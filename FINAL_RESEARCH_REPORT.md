@@ -128,7 +128,11 @@ The QA pipeline was slower than real time in this CPU run. These CPU measurement
 
 ### Response-quality review
 
-The 100 responses were assigned provisional rubric-based labels by an AI-assisted reviewer using these definitions: correctness means the answer addresses the question accurately and sufficiently; hallucination means a material unsupported or contradictory claim; visible truncation means the response visibly ends incomplete. Reaching the token cap alone was not treated as proof of truncation.
+The 100 responses were assigned provisional rubric-based labels by an AI-assisted reviewer using these definitions:
+
+- **Correctness:** The answer addresses the question accurately and sufficiently.
+- **Hallucination:** A material unsupported or contradictory factual claim is present.
+- **Visible truncation:** The response itself visibly ends incomplete. Reaching the token cap alone is not treated as proof of truncation.
 
 | AI-assisted estimate | Count | Rate |
 |---|---:|---:|
@@ -136,13 +140,19 @@ The 100 responses were assigned provisional rubric-based labels by an AI-assiste
 | Material hallucination flag | 24/100 | 24% |
 | Visibly incomplete | 44/100 | 44% |
 
-These figures are **AI-assisted estimates, not independently human-verified metrics**. The official `human_correct_0_or_1`, `human_hallucination_0_or_1`, and `response_truncated_0_or_1` columns remain blank in the original inference artifact. Some prompt/reference rows may be concatenated or misaligned, so the estimates should be treated cautiously. A reviewer can reproduce the review protocol using the rubric in `README.md` and `scripts/score_manual_review.py`; response-quality claims should be upgraded to human-reviewed only after those labels are filled by a human reviewer.
+These figures are **AI-assisted estimates, not independently human-verified metrics**. The official `human_correct_0_or_1`, `human_hallucination_0_or_1`, and `response_truncated_0_or_1` columns remain blank in the original inference artifact.
+
+A 20-example spot-check identified at least one clear content-level question/reference-answer mismatch (`sample-0088`) and several prompts containing multiple embedded tasks, where the reference may address only one component (including `sample-0010` and `sample-0020`). These issues may make some correctness and hallucination judgments ambiguous.
+
+The spot-check did **not** establish a general CSV row-order shift. The identified concern is the content and structure of some question/reference pairs, not proof that rows are systematically misaligned. The full 100 examples have not been independently human-verified.
+
+Consequently, the AI-assisted response-quality counts should be treated as **exploratory estimates, not validated aggregate rates**. Ambiguous or mismatched examples should be reviewed using a documented rule, and stronger response-quality claims should be made only after human reviewers have filled the official review fields. A reviewer can use the rubric in `README.md` and `scripts/score_manual_review.py` to record annotations and calculate metrics.
 
 ## 7. Reproducibility and artifacts
 
 - Fresh-run spot check: **60/60 paired transcripts identical** for 10 utterances × two conditions × three methods.
-- Unit/offline tests: **12 passed** in the source-package audit environment.
-- The complete raw QA prediction CSV and annotated row-level review files are retained in private Drive storage and are not included in this shareable ZIP because they contain example-level content from a gated dataset. Aggregate QA metrics and the AI-assisted review summary are included here.
+- Unit/offline tests: **12 passed** in the recorded source-package audit environment. A fresh run of the current checkout is still recommended before submission.
+- The complete raw QA prediction CSV and annotated row-level review files are retained in private Drive storage and are not included in this shareable package because they contain example-level content from a gated dataset. Aggregate QA metrics and the AI-assisted review summary are included here.
 - The notebook clears all cell outputs, contains no embedded Hugging Face token, and documents model/dataset access requirements.
 
 ## 8. Limitations
@@ -150,12 +160,12 @@ These figures are **AI-assisted estimates, not independently human-verified metr
 1. FLEURS consists of read speech; added white noise is synthetic and does not cover reverberation, real-world noise, spontaneous speech, or diverse microphones.
 2. The end-to-end response dataset is Hindi-only with MMS Hindi TTS audio, so no Kannada end-to-end answer-quality claim is made.
 3. The end-to-end CPU run is slow; performance on T4 GPU was not measured for the full 100-example run.
-4. The QA quality labels are AI-assisted and not independently human-verified. References may be imperfect or misaligned.
+4. Response correctness and hallucination labels are AI-assisted and have not been independently human-verified. A 20-example spot-check identified a clear question/reference mismatch and multiple multi-task prompts with potentially incomplete reference answers. It did not establish a general CSV row-order shift. These data-quality issues mean the response-quality figures remain exploratory.
 5. The adaptive confidence proxy is uncalibrated and behaved differently across the two languages.
-6. Exact model and dataset access/license terms must be reviewed before redistribution. Do not publish gated data or model weights.
+6. The exact Qwen revision used in the completed QA run was not recorded. Model and dataset access/license terms must be reviewed before redistribution. Do not publish gated data or model weights.
 
 ## 9. Conclusion
 
-The project implements an open-model Indic speech-to-text-response pipeline, custom evaluation code, two-language clean/noisy ASR evaluation, a controlled decoder ablation, threshold selection on validation data, and held-out test evaluation. The adaptive method modestly improved over greedy on the macro test WER but was inferior to fixed beam-5 and more costly in latency; the original hypothesis was therefore not supported as a full accuracy-latency win. Kannada recognition quality in the Whisper ablation was inadequate. End-to-end inference completed on 100 Hindi synthetic-TTS questions, with measured ASR/pipeline latency and transparent provisional response-quality estimates. Independent human annotation remains the next quality-validation step.
+The project implements a speech-to-text-response pipeline, custom evaluation code, two-language clean/noisy ASR evaluation, a controlled decoder ablation, threshold selection on validation data, and held-out test evaluation. The adaptive method improved over greedy on macro test WER but was inferior to fixed beam-5 and more costly in latency; the original hypothesis was therefore not supported as a complete accuracy-latency win. Kannada recognition quality in the Whisper ablation was inadequate.
 
-**Additional QA data-quality limitation:** A 20-example spot-check identified at least one clear question/reference-answer mismatch and several prompts containing multiple embedded tasks. These issues may affect response-correctness and hallucination assessments. Consequently, the reported AI-assisted response-quality estimates are exploratory, not validated aggregate rates. A cleaned, unambiguous evaluation set and further independent review are needed before drawing stronger conclusions. No official human-review labels have been populated.
+End-to-end inference completed on 100 Hindi synthetic-TTS questions, with measured ASR/pipeline latency and provisional response-quality estimates. The 20-example review found content-level question/reference issues but did not establish a general row-order shift. Independent human annotation and further evaluation on unambiguous QA examples remain necessary before stronger correctness and hallucination claims can be made.

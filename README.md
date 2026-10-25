@@ -1,4 +1,3 @@
-
 # Indic Speech AI Research Assignment — Task 2
 
 **Pipeline:** Speech Input → ASR → Language Model → Text Response
@@ -93,6 +92,10 @@ The test results show that adaptive decoding improves macro WER over greedy deco
 
 ## 6. Repository setup and reproducibility
 
+Repository: [`sajid-mohd/indic-speech-ai-task2-`](https://github.com/sajid-mohd/indic-speech-ai-task2-)
+
+The Colab notebook clones the repository directly; a separately distributed ZIP is not required for the normal setup.
+
 ### Requirements files
 
 - `requirements.txt` describes a general local development environment.
@@ -116,12 +119,12 @@ Run the offline tests from the repository root:
 python -m pytest -q
 ```
 
-If the tests require the repository's source directory on the Python path, configure `PYTHONPATH=src` before running them.
+If imports fail when running tests from the repository root, set the source directory on the Python path first. In PowerShell, use `$env:PYTHONPATH = "src"`; in macOS/Linux shells, use `export PYTHONPATH=src`.
 
 ### Run in Google Colab
 
 1. Open `Indic_Speech_AI_Research_Submission.ipynb` in Colab.
-2. Follow the notebook's setup cell to provide the matching project ZIP or project directory.
+2. Run the notebook's first setup cell. It clones `https://github.com/sajid-mohd/indic-speech-ai-task2-.git` into `/content/speech_ai_assignment`. If the project folder already exists, the cell reuses it when the expected files are present.
 3. Select a compatible GPU runtime for the FLEURS and Whisper experiments when GPU inference is required.
 4. Authenticate with Hugging Face when prompted and ensure that access to gated models or datasets has been approved.
 5. Run the notebook cells in order. Long inference cells are deliberately not auto-executed; avoid using **Run all** without reviewing the runtime and experiment instructions.
@@ -146,7 +149,6 @@ Check the current model cards, access conditions, and license terms before rerun
 - `results/`: aggregate CSV/JSON results, not raw row-level gated QA examples.
 - `MODEL_SELECTION.md`: model selection and access notes.
 - `AUDIT_REPORT.md`: recorded code, test, and environment audit.
-- `GITHUB_SUBMISSION.md` and `COLAB_TO_GITHUB.md`: repository publication instructions.
 
 ## 8. Important limitations
 

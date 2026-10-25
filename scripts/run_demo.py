@@ -18,7 +18,7 @@ def main() -> None:
     parser.add_argument("--language", choices=["hi", "kn", "ta", "te", "bn", "mr", "ml", "gu", "pa", "en"], default="hi")
     parser.add_argument("--beam-size", type=int, default=5)
     parser.add_argument("--decoder", choices=["greedy", "beam", "adaptive"], default="beam")
-    parser.add_argument("--adaptive-threshold", type=float, default=-0.7)
+    parser.add_argument("--adaptive-threshold", type=float, default=-0.3)
     parser.add_argument("--asr-model-size", default="small")
     parser.add_argument("--llm-model", default="Qwen/Qwen2.5-1.5B-Instruct")
     parser.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"])

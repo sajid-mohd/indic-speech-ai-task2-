@@ -1,14 +1,17 @@
-# Google Colab (Oct 2026) setup.
-# Preserve Colab's CUDA-enabled torch/torchaudio and modern Hub/Transformers/Datasets.
-# In particular, do NOT downgrade huggingface_hub below 1.32, datasets below 5.1,
-# transformers below 5.20, or fsspec below the Colab gcsfs-compatible version.
+
+# Google Colab environment for fresh runs.
+# Preserve Colab's preinstalled CUDA-enabled PyTorch build.
+# This targets a newer Colab environment; it is not an exact
+# package lock for the historical QA run in results/qa_run_summary.json.
+
 faster-whisper==1.2.1
+ctranslate2==4.8.3
 av>=15,<18
-datasets>=5.1,<6
-transformers>=5.20,<6
-huggingface_hub>=1.32,<2
+datasets[audio]>=5.1,<6
+transformers==5.20.2
+huggingface_hub==1.33.0
 fsspec==2025.12.0
-accelerate>=1.2.0
+accelerate>=1.2.0,<2.0
 soundfile>=0.12.1
 scipy>=1.13.0
 numpy>=1.26.0

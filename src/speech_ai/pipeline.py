@@ -173,7 +173,7 @@ class SpeechAssistant:
         audio: np.ndarray,
         sample_rate: int = 16_000,
         language: str = "hi",
-        confidence_threshold: float = -0.7,
+        confidence_threshold: float = -0.3,
         fallback_beam_size: int = 5,
     ) -> dict[str, Any]:
         """Run a greedy pass and only rerun with beam search when it looks uncertain.
@@ -285,7 +285,7 @@ class SpeechAssistant:
         language: str = "hi",
         beam_size: int = 5,
         decoder: str = "beam",
-        confidence_threshold: float = -0.7,
+        confidence_threshold: float = -0.3,
     ) -> dict[str, Any]:
         total_start = time.perf_counter()
         if self.asr_backend == "indic-transcribe":
@@ -328,7 +328,7 @@ class SpeechAssistant:
 
     def process_file(
         self, audio_path: str, language: str = "hi", beam_size: int = 5,
-        decoder: str = "beam", confidence_threshold: float = -0.7,
+        decoder: str = "beam", confidence_threshold: float = -0.3,
     ) -> dict[str, Any]:
         import soundfile as sf
         audio, sample_rate = sf.read(audio_path, dtype="float32", always_2d=False)

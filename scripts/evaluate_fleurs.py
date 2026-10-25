@@ -34,7 +34,7 @@ def get_args() -> argparse.Namespace:
     parser.add_argument("--languages", nargs="+", default=["hi_in", "kn_in"],
                         help="FLEURS configs; defaults to Hindi and Kannada")
     parser.add_argument("--noise-snr-db", type=float, default=10.0)
-    parser.add_argument("--adaptive-threshold", type=float, default=-0.7,
+    parser.add_argument("--adaptive-threshold", type=float, default=-0.3,
                         help="Greedy avg segment log-probability below which beam search is triggered")
     parser.add_argument("--split", choices=["validation", "test"], default="test",
                         help="Use validation to select/freeze the threshold; report final results on test")

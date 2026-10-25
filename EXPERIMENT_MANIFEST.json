@@ -1,0 +1,65 @@
+{
+  "project": "Indic Speech AI Research Assignment — Task 2",
+  "models": {
+    "indic_asr": "bodhan-ai/indic-transcribe-core",
+    "indic_asr_revision": "e083ab7dfeeddcb5c0b4a2d7df53f53e7b0f1537",
+    "whisper_baseline": "Systran/faster-whisper-small",
+    "response_llm": "Qwen/Qwen2.5-1.5B-Instruct",
+    "response_llm_revision": null
+  },
+  "data": {
+    "asr_dataset": "google/fleurs",
+    "asr_split_validation": "validation",
+    "asr_split_test": "test",
+    "languages": [
+      "hi_in",
+      "kn_in"
+    ],
+    "n_per_language": 50,
+    "conditions": [
+      "clean",
+      "white_noise_10dB"
+    ],
+    "qa_dataset": "Pastaaaaa2003/Hindi-speech-instruct",
+    "qa_dataset_revision": "3dc2ceb4f564d25f673d446fe8533e1ed6472a50",
+    "qa_split": "validation",
+    "qa_n_samples": 100,
+    "qa_audio_provenance": "MMS Hindi TTS"
+  },
+  "research_extension": {
+    "name": "Confidence-triggered adaptive beam-5 decoding",
+    "confidence_proxy": "mean segment avg_logprob; uncalibrated heuristic",
+    "threshold_candidates": [
+      -1.0,
+      -0.8,
+      -0.7,
+      -0.6,
+      -0.5,
+      -0.4,
+      -0.3,
+      -0.2,
+      -0.1,
+      0.0
+    ],
+    "selection_rule": "lowest validation macro WER subject to fallback rate <= 0.50",
+    "selected_threshold": -0.3,
+    "selection_split": "validation",
+    "evaluation_split": "test",
+    "whisper_temperature": 0.0
+  },
+  "results": {
+    "test_macro_wer": {
+      "greedy": 0.867575,
+      "adaptive_m03": 0.8483,
+      "fixed_beam5": 0.830225
+    },
+    "test_macro_cer": {
+      "greedy": 0.73635,
+      "adaptive_m03": 0.723125,
+      "fixed_beam5": 0.706225
+    },
+    "qa_cpu_mean_pipeline_latency_s": 202.47449812561013,
+    "qa_cpu_mean_pipeline_rtf": 14.501734171267302,
+    "qa_ai_assisted_labels_not_human_verified": true
+  }
+}

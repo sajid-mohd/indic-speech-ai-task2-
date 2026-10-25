@@ -1,0 +1,9 @@
+{
+  "n_unique_utterances": 10,
+  "paired_output_rows": 60,
+  "identical_transcripts": 60,
+  "different_transcripts": 0,
+  "missing_pairs": 0,
+  "transcript_agreement": 1.0,
+  "scope_note": "Spot check on 10 utterances, 2 languages, clean/noisy conditions, 3 decoding methods; not a guarantee across all platforms."
+}

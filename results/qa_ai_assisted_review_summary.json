@@ -1,0 +1,25 @@
+{
+  "n_examples": 100,
+  "assessment_type": "AI-assisted rubric-based review; not independently human-verified",
+  "criteria": {
+    "correctness": "1 if the answer factually addresses the question sufficiently; 0 if wrong, materially incomplete, nonresponsive, or answering another task.",
+    "hallucination": "1 if a material unsupported or contradictory factual claim is present; 0 if no such claim is identified.",
+    "visible_truncation": "1 only if the answer visibly ends incomplete; token-cap flag alone is not sufficient."
+  },
+  "ai_assessed_correct_count": 12,
+  "ai_assessed_correct_rate": 0.12,
+  "ai_assessed_hallucination_count": 24,
+  "ai_assessed_hallucination_rate": 0.24,
+  "ai_assessed_visible_truncation_count": 44,
+  "ai_assessed_visible_truncation_rate": 0.44,
+  "official_human_label_coverage": {
+    "correctness": 0,
+    "hallucination": 0,
+    "visible_truncation": 0
+  },
+  "limitations": [
+    "Provisional AI-assisted assessment; not independent human annotation.",
+    "Some question/reference rows may be concatenated or misaligned.",
+    "The raw QA CSV includes examples from a gated dataset and is omitted from this shareable package."
+  ]
+}

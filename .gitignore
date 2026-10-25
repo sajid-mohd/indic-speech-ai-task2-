@@ -1,0 +1,45 @@
+# Python / notebooks
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.cache/
+
+# Credentials and secrets — never commit Hugging Face/GitHub tokens
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.json
+
+# Model caches, weights, audio and local temporary files
+**/models/
+**/checkpoints/
+**/audio/
+*.wav
+*.mp3
+*.flac
+*.tmp
+*.log
+
+# Row-level predictions / gated QA examples / review workbooks must remain private
+results/**/*predictions*.csv
+results/**/*partial*.csv
+results/**/*qa_predictions*.csv
+results/**/*review*.xlsx
+results/**/*review*.csv
+results/**/*.tmp.csv
+
+# Keep aggregate results (e.g., *_summary.csv and explicit summary JSONs) trackable.
+
+# Additional generated artifacts and private QA reviews
+!.env.example
+*predictions*.csv
+*review*.csv
+*review*.xlsx
+*review*.xls
+*proposals*.csv

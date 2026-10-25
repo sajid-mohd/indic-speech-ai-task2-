@@ -1,0 +1,5 @@
+language,condition,n_samples,corpus_wer,corpus_cer,fallback_rate,mean_estimated_latency_s,threshold
+hi,clean,50,0.552,0.3247,0.86,1.0345,-0.3
+hi,white_noise_10dB,50,0.7867,0.5236,0.86,1.0697,-0.3
+kn,clean,50,1.0,0.9965,0.1,0.8799,-0.3
+kn,white_noise_10dB,50,1.0102,0.9851,0.08,0.8292,-0.3

@@ -1,0 +1,34 @@
+{
+  "asr_test_macro": {
+    "greedy": {
+      "wer": 0.867575,
+      "cer": 0.73635,
+      "mean_latency_s": 0.6732
+    },
+    "adaptive_threshold_-0.3": {
+      "wer": 0.8483,
+      "cer": 0.723125,
+      "mean_latency_s": 1.01165
+    },
+    "fixed_beam5": {
+      "wer": 0.830225,
+      "cer": 0.706225,
+      "mean_latency_s": 0.924625
+    }
+  },
+  "qa_100_cpu": {
+    "wer": 0.17733844791974035,
+    "cer": 0.07980173482032218,
+    "mean_pipeline_latency_s": 202.47449812561013,
+    "median_pipeline_latency_s": 156.10412095749962,
+    "mean_pipeline_rtf": 14.501734171267302,
+    "token_limit_rate": 0.44
+  },
+  "qa_ai_assisted_review": {
+    "correct_rate": 0.12,
+    "hallucination_flag_rate": 0.24,
+    "visible_truncation_rate": 0.44,
+    "human_verified": false
+  },
+  "threshold_selected": -0.3
+}

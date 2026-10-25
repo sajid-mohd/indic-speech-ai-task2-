@@ -1,0 +1,13 @@
+language,condition,experiment,adaptive_threshold,n_samples,corpus_wer,corpus_cer,mean_latency_s,mean_rtf,fallback_rate
+hi,clean,adaptive_confidence_beam5,-0.3,50,0.5907,0.3164,1.1669,0.1083,0.9
+hi,clean,baseline_greedy,,50,0.6288,0.3579,0.5318,0.049,
+hi,clean,fixed_beam5,,50,0.5847,0.3099,0.7224,0.066,
+hi,white_noise_10dB,adaptive_confidence_beam5,-0.3,50,0.7856,0.5099,1.1743,0.1101,0.88
+hi,white_noise_10dB,baseline_greedy,,50,0.8246,0.5221,0.5463,0.0514,
+hi,white_noise_10dB,fixed_beam5,,50,0.7127,0.4627,0.7415,0.0676,
+kn,clean,adaptive_confidence_beam5,-0.3,50,1.0169,1.0333,0.8485,0.0717,0.04
+kn,clean,baseline_greedy,,50,1.0169,1.0335,0.8032,0.0684,
+kn,clean,fixed_beam5,,50,1.0104,1.0233,1.1181,0.0956,
+kn,white_noise_10dB,adaptive_confidence_beam5,-0.3,50,1.0,1.0329,0.8569,0.072,0.04
+kn,white_noise_10dB,baseline_greedy,,50,1.0,1.0319,0.8105,0.0689,
+kn,white_noise_10dB,fixed_beam5,,50,1.013,1.029,1.1165,0.0946,

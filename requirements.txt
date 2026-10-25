@@ -1,13 +1,18 @@
-# Install a torch build matching your runtime first if you need a specific CUDA version.
+
+# General environment for local development and tests.
+# The Colab-specific environment is defined in requirements-colab.txt.
+# Install a PyTorch build appropriate for your CPU/CUDA runtime first.
+
 torch>=2.3.0
-faster-whisper>=1.1.0,<2.0
-datasets[audio]>=3.1.0,<4.0
-transformers>=4.45.0,<5.0
-accelerate>=1.0.0
+faster-whisper>=1.2.1,<2.0
+ctranslate2>=4.8.3,<5.0
+datasets[audio]>=4.8.5,<6.0
+transformers>=5.20.2,<6.0
+accelerate>=1.2.0,<2.0
 soundfile>=0.12.1
 scipy>=1.13.0
 numpy>=1.26.0
 pandas>=2.2.0
 pytest>=8.0.0
 sentencepiece>=0.2.0
-huggingface_hub>=0.30.0
+huggingface_hub>=1.32.0,<2.0
